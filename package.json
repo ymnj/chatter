@@ -1,0 +1,26 @@
+{
+  "name": "chatter",
+  "version": "1.0.0",
+  "description": "socket-io chat app",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymnj/chatter.git"
+  },
+  "engines": {
+    "node": "6.9.2"
+  },
+  "author": "Tom Hung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ymnj/chatter/issues"
+  },
+  "homepage": "https://github.com/ymnj/chatter#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
