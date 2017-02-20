@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-app": "nodemon server/server.js --watch ./"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/ymnj/chatter#readme",
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "socket.io": "^1.7.3"
   }
 }
