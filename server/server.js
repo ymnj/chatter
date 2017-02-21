@@ -11,20 +11,25 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
+const generateMessage = require('./utils/message');
+
+
 app.use(express.static(publicPath));
 
 //lets you register a event listener
 io.on('connection', (socket) => {
-	console.log('New user connected');
+
+	//Broadcast sends to everyone except the socket which just connected
+	socket.broadcast.emit('newMsg', generateMessage('Admin', 'A new user has joined the chat!'))
+
+	// Sends to just the socket which connected
+	socket.emit('newMsg', generateMessage('Admin', 'Welcome to the chat room!'))
 
 	socket.on('createMsg', (msg) => {
-		console.log('createMsg', msg);
-		io.emit('newMsg', {
-			from: msg.from,
-			text: msg.text,
-			createdAt: new Date().getTime()
-		})
-	})
+
+		//io.emit sends to everyone
+		io.emit('newMsg', generateMessage( msg.from, msg.text));
+	});
 
 	socket.on('disconnect', () => {
 		console.log('User disconnected');

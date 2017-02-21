@@ -9,5 +9,5 @@ socket.on('disconnect', function() {
 });
 
 socket.on('newMsg', function(msg){
-	console.log('new msg', msg);
+	console.log(`From: ${msg.from}, ${msg.text}`);
 });
