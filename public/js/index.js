@@ -28,6 +28,7 @@ new Vue({
 
 		socket.on('newMsg', function(msg){
 			vm.recievedMessages.push(`${msg.from} - ${msg.message}`);
+			vm.userMessage = '';
 		});
 	}
 });

@@ -7,7 +7,7 @@
 	
 	<div id="app">
 
-		<input type="text" name="message" v-model="userMessage" placeholder="Write your message">
+		<input type="text" name="message" v-model="userMessage" placeholder="Write your message" @keyup.enter="submitMessage">
 		<button type="submit" @click="submitMessage">Submit</button>
 
 		<div id="chat-window">
