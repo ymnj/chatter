@@ -1,7 +1,7 @@
-module.exports = generateMessage = (from, text) => {
+module.exports = generateMessage = (from, message) => {
 	return {
 		from,
-		text,
+		message,
 		createdAt: new Date().getTime()
 	}
 };

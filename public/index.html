@@ -4,9 +4,24 @@
 	<title>Chatter</title>
 </head>
 <body>
-	Hello world
+	
+	<div id="app">
+
+		<input type="text" name="message" v-model="userMessage" placeholder="Write your message">
+		<button type="submit" @click="submitMessage">Submit</button>
+
+		<div id="chat-window">
+			<ul>
+				<li v-for="message in recievedMessages">
+					{{ message }}
+				</li>
+			</ul>
+		</div>
+	
+	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 	<script src="/js/index.js"></script>
 </body>
 </html>

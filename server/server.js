@@ -25,10 +25,10 @@ io.on('connection', (socket) => {
 	// Sends to just the socket which connected
 	socket.emit('newMsg', generateMessage('Admin', 'Welcome to the chat room!'))
 
-	socket.on('createMsg', (msg) => {
-
+	socket.on('createMsg', (msg, callback) => {
 		//io.emit sends to everyone
-		io.emit('newMsg', generateMessage( msg.from, msg.text));
+		io.emit('newMsg', generateMessage( msg.from, msg.message));
+		callback('This is from server');
 	});
 
 	socket.on('disconnect', () => {

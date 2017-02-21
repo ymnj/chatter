@@ -1,13 +1,49 @@
+
 let socket = io();
 
-socket.on('connect', function() {
-	console.log('Connected to server');
+
+new Vue({
+	el: '#app',
+	data: {
+		userMessage: "",
+		recievedMessages: []
+	},
+	methods: {
+		submitMessage() {
+			socket.emit('createMsg', {
+				from: 'Tom',
+				message: this.userMessage
+			}, function(data) {
+				console.log('Got it', data);
+			})
+		}
+	},
+	mounted() {
+
+		vm = this;
+
+		socket.on('connect', function() {
+			console.log('Connected to server');
+		});
+
+		socket.on('newMsg', function(msg){
+			vm.recievedMessages.push(`${msg.from} - ${msg.message}`);
+		});
+	}
 });
 
-socket.on('disconnect', function() {
-	console.log('Disconnected from server');
-});
+// socket.on('connect', function() {
+// 	console.log('Connected to server');
+// });
 
-socket.on('newMsg', function(msg){
-	console.log(`From: ${msg.from}, ${msg.text}`);
-});
+// socket.on('disconnect', function() {
+// 	console.log('Disconnected from server');
+// });
+
+// socket.on('newMsg', function(msg){
+// 	// this.recievedMessages.push(`${msg.from} - ${msg.message}`)
+// 	//console.log(this.recievedMessages);
+// });
+
+
+
