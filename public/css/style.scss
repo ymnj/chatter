@@ -1,0 +1,32 @@
+body {
+	background-color: salmon;
+	margin: 0;
+	padding: 0;
+}
+
+#content-wrap {
+	display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+}
+
+#chat-window {
+	width: 80%;
+	height: 100vh;
+	background: #eee;
+	position: relative;
+}
+
+#chat-footer {
+	background-color: #3d3d3d;
+	width: 100%;
+	position: absolute;
+  bottom: 0px;
+}
+
+#side-bar {
+	width: 20%;
+	height: 100vh;
+	background-color: steelblue;
+}

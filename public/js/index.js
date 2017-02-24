@@ -1,7 +1,6 @@
 
 let socket = io();
 
-
 new Vue({
 	el: '#app',
 	data: {

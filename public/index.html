@@ -2,20 +2,33 @@
 <html>
 <head>
 	<title>Chatter</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
 	
 	<div id="app">
 
-		<input type="text" name="message" v-model="userMessage" placeholder="Write your message" @keyup.enter="submitMessage">
-		<button type="submit" @click="submitMessage">Submit</button>
+		<div id="content-wrap">
+			<div id="chat-window">
+				<ul>
+					<li v-for="message in recievedMessages">
+						{{ message }}
+					</li>
+				</ul>
+				<div id="chat-footer" class="col-lg-6">
+			    <div class="input-group">
+			      <input type="text" class="form-control" placeholder="Search for...">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button">Go!</button>
+			      </span>
+			    </div><!-- /input-group -->
+			  </div><!-- /.col-lg-6 -->
+			</div>
 
-		<div id="chat-window">
-			<ul>
-				<li v-for="message in recievedMessages">
-					{{ message }}
-				</li>
-			</ul>
+			<div id="side-bar">	
+				<h3>Users</h3>
+			</div>
 		</div>
 	
 	</div>
