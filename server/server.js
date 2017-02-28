@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
 
 	socket.on('createMsg', (msg, callback) => {
 		//io.emit sends to everyone
-		io.emit('newMsg', generateMessage( msg.from, msg.message));
+		io.emit('newMsg', generateMessage( msg.from, msg.message, msg.createdAt ));
 		callback('This is from server');
 	});
 

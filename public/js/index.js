@@ -11,7 +11,8 @@ new Vue({
 		submitMessage() {
 			socket.emit('createMsg', {
 				from: 'Tom',
-				message: this.userMessage
+				message: this.userMessage,
+				createdAt: new Date()
 			}, function(data) {
 				console.log('Got it', data);
 			})
@@ -26,7 +27,7 @@ new Vue({
 		});
 
 		socket.on('newMsg', function(msg){
-			vm.recievedMessages.push(`${msg.from} - ${msg.message}`);
+			vm.recievedMessages.push(`${msg.from} - ${msg.message} - ${msg.createdAt}`);
 			vm.userMessage = '';
 		});
 	}
