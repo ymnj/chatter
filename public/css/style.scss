@@ -16,6 +16,25 @@ body {
 	height: 100vh;
 	background: #eee;
 	position: relative;
+
+	li {
+		list-style-type: none;
+	}
+
+	.chat-message-wrap {
+
+		margin: 2% 0 2% 0;
+
+		.message-timestamp {
+			font-size: 0.8em;
+		}
+
+		.message-line {
+			background-color: lightblue;
+			padding: 10px;
+			border-radius: 10px;
+		}
+	}
 }
 
 #chat-footer {
@@ -23,10 +42,11 @@ body {
 	width: 100%;
 	position: absolute;
   bottom: 0px;
-}
+}s
 
 #side-bar {
 	width: 20%;
 	height: 100vh;
 	background-color: steelblue;
 }
+

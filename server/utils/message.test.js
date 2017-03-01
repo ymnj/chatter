@@ -1,5 +1,5 @@
 let expect = require('expect');
-
+let moment = require('moment');
 let generateMessage = require('./message');
 
 describe('generateMessage', () => {
@@ -7,12 +7,12 @@ describe('generateMessage', () => {
 	it('should generate the correct message object', () => {
 
 		let from = 'testUser';
-		let message = 'Test message';
-		let message = generateMessage(from, message);
+		let testMessage = 'Test message';
+		let message = generateMessage(from, testMessage);
 
 		expect(message.createdAt).toBeA('number');
 		expect(message.from).toBe(from);
-		expect(message.message).toBe(message);
+		expect(message.message).toBe(testMessage);
 
 	})
 });

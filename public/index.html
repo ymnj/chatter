@@ -13,7 +13,13 @@
 			<div id="chat-window">
 				<ul>
 					<li v-for="message in recievedMessages">
-						{{ message }}
+						<div class="chat-message-wrap">
+							<p>
+								<span class="message-timestamp">{{message.time}}</span> 
+								<span class="message-line">{{message.message}}</span>
+							</p>
+						</div>
+						<!-- ${msg.from}: ${dateFormat} - ${msg.message} -->
 					</li>
 				</ul>
 				<div id="chat-footer" class="col-lg-6">
@@ -35,6 +41,7 @@
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+	<script src="/js/libs/moment.js"></script>
 	<script src="/js/index.js"></script>
 </body>
 </html>

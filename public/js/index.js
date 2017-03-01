@@ -1,4 +1,3 @@
-
 let socket = io();
 
 new Vue({
@@ -11,8 +10,7 @@ new Vue({
 		submitMessage() {
 			socket.emit('createMsg', {
 				from: 'Tom',
-				message: this.userMessage,
-				createdAt: new Date()
+				message: this.userMessage
 			}, function(data) {
 				console.log('Got it', data);
 			})
@@ -27,24 +25,17 @@ new Vue({
 		});
 
 		socket.on('newMsg', function(msg){
-			vm.recievedMessages.push(`${msg.from} - ${msg.message} - ${msg.createdAt}`);
+			let dateFormat = moment(msg.createdAt).format('h:mm a');
+			vm.recievedMessages.push({
+				from: msg.from,
+				message: msg.message,
+				time: dateFormat
+			});
 			vm.userMessage = '';
 		});
 	}
 });
 
-// socket.on('connect', function() {
-// 	console.log('Connected to server');
-// });
-
-// socket.on('disconnect', function() {
-// 	console.log('Disconnected from server');
-// });
-
-// socket.on('newMsg', function(msg){
-// 	// this.recievedMessages.push(`${msg.from} - ${msg.message}`)
-// 	//console.log(this.recievedMessages);
-// });
 
 
 
