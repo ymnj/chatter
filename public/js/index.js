@@ -12,8 +12,14 @@ new Vue({
 				from: 'Tom',
 				message: this.userMessage
 			}, function(data) {
-				console.log('Got it', data);
+				// console.log('Got it', data);
 			})
+		},
+		scrollToBottom() {
+			let selector = document.querySelector('.chat-messages-wrap');
+			if(selector.scrollTop === (selector.scrollHeight - selector.offsetHeight)){
+				selector.scrollTop = selector.scrollHeight;
+			}
 		}
 	},
 	mounted() {
@@ -32,6 +38,7 @@ new Vue({
 				time: dateFormat
 			});
 			vm.userMessage = '';
+			vm.scrollToBottom();
 		});
 	}
 });

@@ -11,13 +11,11 @@
 
 		<div id="content-wrap">
 			<div id="chat-window">
-				<ul>
+				<ul class="chat-messages-wrap">
 					<li v-for="message in recievedMessages">
-						<div class="chat-message-wrap">
-							<p>
-								<span class="message-timestamp">{{message.time}}</span> 
-								<span class="message-line">{{message.message}}</span>
-							</p>
+						<div class="single-messages-wrap">
+							<div class="message-timestamp">{{message.time}}</div> 
+							<p class="message-line">{{message.message}}</p>
 						</div>
 						<!-- ${msg.from}: ${dateFormat} - ${msg.message} -->
 					</li>
