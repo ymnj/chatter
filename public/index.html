@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Chatter</title>
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/enter-style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
 	
 	<div id="app">
-
-		<div id="content-wrap">
-			<div id="chat-window">
-				<ul class="chat-messages-wrap">
-					<li v-for="message in recievedMessages">
-						<div class="single-messages-wrap">
-							<div class="message-timestamp">{{message.time}}</div> 
-							<p class="message-line">{{message.message}}</p>
-						</div>
-						<!-- ${msg.from}: ${dateFormat} - ${msg.message} -->
-					</li>
-				</ul>
-				<div id="chat-footer" class="col-lg-6">
-			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="Search for..." v-model="userMessage"  @keyup.enter="submitMessage">
-			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button" @click="submitMessage">Go!</button>
-			      </span>
-			    </div>
+		<div class="container vertical">
+			<form action="./chat.html">
+				<h1>Join Chat</h1>
+			  <div class="form-group">
+			    <label for="username">Username</label>
+			    <input type="text" class="form-control" id="username" placeholder="User" autofocus>
 			  </div>
-			</div>
-
-			<div id="side-bar">	
-				<h3>Users</h3>
-			</div>
+			  <div class="form-group">
+			    <label for="room">Chat Room</label>
+			    <input type="text" class="form-control" id="room" placeholder="Room">
+			  </div>
+			  <div class="form-group row">
+		      <div class="text-center">
+		        <button type="submit" class="btn">Join</button>
+		      </div>
+		    </div>
+			</form>
 		</div>
-	
+
 	</div>
 
 	<script src="/socket.io/socket.io.js"></script>

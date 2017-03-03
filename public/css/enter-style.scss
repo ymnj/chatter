@@ -1,0 +1,17 @@
+.vertical {
+	min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+	padding: 2% 5%;
+	border-radius: 10%;
+	background: steelblue;
+}
+
+button.btn {
+	margin: 10% 0 0 0;
+}
