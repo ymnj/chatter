@@ -16,10 +16,21 @@ new Vue({
 			})
 		},
 		scrollToBottom() {
-			let selector = document.querySelector('.chat-messages-wrap');
-			if(selector.scrollTop === (selector.scrollHeight - selector.offsetHeight)){
-				selector.scrollTop = selector.scrollHeight;
-			}
+			let selector = document.querySelector('.chat-messages-wrap'),
+					scrollTop    = selector.scrollTop,
+					scrollHeight = selector.scrollHeight,
+					offsetHeight = selector.offsetHeight;
+
+			setTimeout(() => {
+				let latestMsgHeight = selector.lastChild.offsetHeight;
+				if(selector.children.length > 1){
+					let secondLastMsgHeight = selector.lastChild.previousSibling.offsetHeight;
+
+					if( offsetHeight + scrollTop + latestMsgHeight + secondLastMsgHeight >= scrollHeight ){
+						selector.scrollTop = scrollHeight;
+					}
+				}
+			}, 0)
 		}
 	},
 	mounted() {
