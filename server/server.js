@@ -12,12 +12,21 @@ const server = http.createServer(app);
 const io = socketIO(server);
 
 const generateMessage = require('./utils/message');
+const {isRealString} = require('./utils/validation');
 
 
 app.use(express.static(publicPath));
 
 //lets you register a event listener
 io.on('connection', (socket) => {
+
+	socket.on('join', (params, callback) => {
+		if(!isRealString(params.name) || !isRealString(params.room)){
+			callback('Name and room name are required');
+		}
+
+		callback();
+	})
 
 	//Broadcast sends to everyone except the socket which just connected
 	socket.broadcast.emit('newMsg', generateMessage('Admin', 'A new user has joined the chat!'))

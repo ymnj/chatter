@@ -11,15 +11,16 @@
 	
 	<div id="app">
 		<div class="container vertical">
-			<form action="./chat.html">
+
+			<form method="GET" action="./chat.html">
 				<h1>Join Chat</h1>
 			  <div class="form-group">
 			    <label for="username">Username</label>
-			    <input type="text" class="form-control" id="username" placeholder="User" autofocus>
+			    <input type="text" class="form-control" id="username" name="name" placeholder="User" autofocus>
 			  </div>
 			  <div class="form-group">
 			    <label for="room">Chat Room</label>
-			    <input type="text" class="form-control" id="room" placeholder="Room">
+			    <input type="text" class="form-control" id="room" name="room" placeholder="Room">
 			  </div>
 			  <div class="form-group row">
 		      <div class="text-center">
@@ -34,6 +35,5 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 	<script src="/js/libs/moment.js"></script>
-	<script src="/js/index.js"></script>
 </body>
 </html>
