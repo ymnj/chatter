@@ -25,14 +25,19 @@ io.on('connection', (socket) => {
 			callback('Name and room name are required');
 		}
 
+		let room = params.room.toLowerCase();
+
+		socket.join(room);
+		// Sends to just the socket which connected
+		socket.emit('newMsg', generateMessage('Admin', 'Welcome to the chat room!'))
+
+		//Broadcast sends to everyone except the socket which just connected
+		socket.broadcast.to(room).emit('newMsg', generateMessage('Admin', `${params.name} has joined the room`))
+
+
 		callback();
 	})
 
-	//Broadcast sends to everyone except the socket which just connected
-	socket.broadcast.emit('newMsg', generateMessage('Admin', 'A new user has joined the chat!'))
-
-	// Sends to just the socket which connected
-	socket.emit('newMsg', generateMessage('Admin', 'Welcome to the chat room!'))
 
 	socket.on('createMsg', (msg, callback) => {
 		//io.emit sends to everyone
@@ -49,3 +54,20 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
 	console.log('Listening on port 3000');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
