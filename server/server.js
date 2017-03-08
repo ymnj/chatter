@@ -13,6 +13,8 @@ const io = socketIO(server);
 
 const generateMessage = require('./utils/message');
 const {isRealString} = require('./utils/validation');
+const Users = require('./utils/users');
+const users = new Users();
 
 
 app.use(express.static(publicPath));
@@ -22,18 +24,23 @@ io.on('connection', (socket) => {
 
 	socket.on('join', (params, callback) => {
 		if(!isRealString(params.name) || !isRealString(params.room)){
-			callback('Name and room name are required');
+			return callback('Name and room name are required');
 		}
 
+		//User successfuly joined a room
 		let room = params.room.toLowerCase();
-
+		let name = params.name;
+		
 		socket.join(room);
-		// Sends to just the socket which connected
-		socket.emit('newMsg', generateMessage('Admin', 'Welcome to the chat room!'))
+		users.removeUser(socket.id);
+		users.addUser(socket.id, name, room);
+
+		io.to(room).emit('updateUserList', users.getUsersInRoom(room));
+		//Sends to just the socket which connected
+		socket.emit('newMsg', generateMessage('Admin', `Welcome to the ${room} room!`))
 
 		//Broadcast sends to everyone except the socket which just connected
 		socket.broadcast.to(room).emit('newMsg', generateMessage('Admin', `${params.name} has joined the room`))
-
 
 		callback();
 	})
@@ -46,6 +53,13 @@ io.on('connection', (socket) => {
 	});
 
 	socket.on('disconnect', () => {
+		let user = users.removeUser(socket.id);
+
+		if(user){
+			io.to(user.room).emit('updateUserList', users.getUsersInRoom(user.room));
+			io.to(user.room).emit('newMsg', generateMessage('Admin', `${user.name} has left the room`))
+		}
+
 		console.log('User disconnected');
 	})
 })

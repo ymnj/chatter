@@ -17,7 +17,7 @@ class Users {
 
 		this.usersList = this.usersList.filter((obj) => {
 			if(obj.id === id){
-				removedUser = obj;
+				removedUser = obj; 
 			}
 			return obj.id !== id;
 		});

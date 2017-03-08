@@ -5,7 +5,8 @@ new Vue({
 	el: '#app',
 	data: {
 		userMessage: "",
-		recievedMessages: []
+		recievedMessages: [],
+		usersList: null
 	},
 	methods: {
 		submitMessage() {
@@ -49,6 +50,11 @@ new Vue({
 					console.log('no err');
 				}
 			});
+
+			socket.on('updateUserList', function(usersList) {
+				vm.usersList = usersList;
+				console.log(vm.usersList);
+			})
 		});
 
 		socket.on('newMsg', function(msg){
