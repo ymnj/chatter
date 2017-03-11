@@ -27,7 +27,7 @@ body {
 		flex-grow: 1;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-		padding: 0 2.5%;
+		padding: 2.5%;
 
 		li {
 			list-style-type: none;
@@ -36,8 +36,7 @@ body {
 
 	.single-messages-wrap {
 		display: flex;
-		flex-direction: row;
-		padding-top: 2%;
+		justify-content: flex-end
 
 		p {
 			margin: 0;
@@ -46,14 +45,19 @@ body {
 		.message-timestamp {
 			font-size: 0.8em;
 			flex-shrink: 0;
-			padding: 12px 12px 0 0;
+			padding: 12px 0 0 12px;
 		}
 
 		.message-line {
 			background-color: lightblue;
+			margin-left: 12px;
 			padding: 10px;
 			border-radius: 10px;
 		}
+	}
+
+	.message-from {
+		padding: 0 12px 0 0;
 	}
 
 	#chat-footer {
@@ -64,10 +68,17 @@ body {
 	}
 }
 
-
 #side-bar {
 	width: 20%;
 	height: 100vh;
 	background-color: steelblue;
+
+	h3 {
+		text-align: center;
+	}
+
+	li {
+		list-style-type: none;
+	}
 }
 

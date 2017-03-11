@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
 		callback();
 	})
 
-
+	//Sends messages out to chat window
 	socket.on('createMsg', (msg, callback) => {
 		//io.emit sends to everyone
 		io.emit('newMsg', generateMessage( msg.from, msg.message ));
