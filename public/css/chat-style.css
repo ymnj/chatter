@@ -24,16 +24,14 @@ body {
     padding: 2.5%; }
     #chat-window .chat-messages-wrap li {
       list-style-type: none; }
+    #chat-window .chat-messages-wrap .message-timestamp {
+      font-size: 0.8em;
+      font-style: italic; }
   #chat-window .single-messages-wrap {
     display: flex;
     justify-content: flex-end p;
       justify-content-margin: 0; }
-    #chat-window .single-messages-wrap .message-timestamp {
-      font-size: 0.8em;
-      flex-shrink: 0;
-      padding: 12px 0 0 12px; }
     #chat-window .single-messages-wrap .message-line {
-      background-color: lightblue;
       margin-left: 12px;
       padding: 10px;
       border-radius: 10px; }
@@ -53,5 +51,9 @@ body {
     text-align: center; }
   #side-bar li {
     list-style-type: none; }
+
+/****************** Message styles ****************/
+.admin-style {
+  background-color: red; }
 
 /*# sourceMappingURL=chat-style.css.map */

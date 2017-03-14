@@ -15,10 +15,9 @@
 			<div id="chat-window">
 				<ul class="chat-messages-wrap">
 					<li v-for="message in recievedMessages">
-						<p class="message-from">{{message.from}}</p>
+						<p class="message-from">{{message.from}} <span class="message-timestamp">{{message.time}}</span></p>
 						<div class="single-messages-wrap">
 							<p class="message-line">{{message.message}}</p>
-							<div class="message-timestamp">{{message.time}}</div> 
 						</div>
 					</li>
 				</ul>

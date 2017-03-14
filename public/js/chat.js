@@ -1,6 +1,5 @@
 let socket = io();
 
-
 new Vue({
 	el: '#app',
 	data: {
@@ -10,12 +9,19 @@ new Vue({
 	},
 	methods: {
 		submitMessage() {
+			let params = jQuery.deparam(window.location.search);
+			console.log(params.name);
 			socket.emit('createMsg', {
-				from: 'Tom',
+				from: params.name,
 				message: this.userMessage
 			}, function(data) {
 				// console.log('Got it', data);
 			})
+		},
+		validateLogin() {
+			if(!isRealString(params.name) || !isRealString(params.room)){
+				return callback('Name and room name are required');
+			}
 		},
 		scrollToBottom() {
 			let selector = document.querySelector('.chat-messages-wrap'),
@@ -44,8 +50,8 @@ new Vue({
 
 			socket.emit('join', params, function(err){
 				if (err){
-					alert(err);
 					window.location.href = '/';
+					alert(err);
 				} else {
 					console.log('no err');
 				}
@@ -53,7 +59,6 @@ new Vue({
 
 			socket.on('updateUserList', function(usersList) {
 				vm.usersList = usersList;
-				console.log(vm.usersList);
 			})
 		});
 
